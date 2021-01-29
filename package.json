@@ -14,7 +14,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "Babel": "0.0.1",
+    "if-env": "^1.0.4",
+    "jest": "^26.6.3",
+    "react": "^17.0.1",
+    "webpack": "^5.18.0",
+    "yarb": "^0.8.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
