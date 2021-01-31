@@ -13,12 +13,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
 import { Apps, CloudDownload } from "@material-ui/icons";
+import Search from "@material-ui/icons/Search";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
+import CustomInput from "components/CustomInput/CustomInput";
 
 const useStyles = makeStyles(styles);
 
@@ -114,7 +116,29 @@ export default function HeaderLinks(props) {
             <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
         </Tooltip>
+
+        <Button justIcon round color="white">
+                  <Search className={classes.searchIcon} />
+                  
+      </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <CustomInput
+          white
+          inputRootCustomClasses={classes.inputRootCustomClasses}
+          formControlProps={{className: classes.formControl}}
+          inputProps={{
+            placeholder: "Search",
+            inputProps: {
+              "aria-label": "Search",
+              className: classes.searchInput
+            }
+          }}
+        />
+     
       </ListItem>
     </List>
   );
 }
+
+
