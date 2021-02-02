@@ -63,7 +63,7 @@ const SavedArtist = () => {
                   <Card.Title>{artist.name}</Card.Title>
                   <p className='small'>Authors: {artist.name}</p>
                   <Card.Text>{artist.description}</Card.Text>
-                  <Button className='btn-block btn-danger' onClick={() => handleDeleteArt(artist.artistId)}>
+                  <Button className='btn-block btn-danger' onClick={() => handleDeleteArtist(artist.artistId)}>
                     Delete this Artist!
                   </Button>
                 </Card.Body>
