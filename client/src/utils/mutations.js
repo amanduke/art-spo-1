@@ -25,7 +25,7 @@ export const ADD_USER = gql`
     }
 `;
 
-export const SAVE_BOOK = gql`
+export const SAVE_ARTIST = gql`
     mutation saveArtist($artistData: ArtistInput!) {
         saveArtist(artistData: $artistData) {
             _id
@@ -33,10 +33,9 @@ export const SAVE_BOOK = gql`
             email
             artistCount
             savedArtist {
+                name
                 artistId
-                author
                 description
-                title
                 image
                 link
             }
@@ -49,11 +48,10 @@ export const REMOVE_ARTIST = gql`
         removeArtist(artistId: $artistId) {
                 _id
                 username
-                bookCount
-                savedBooks {
-                    title
-                    authors
-                    bookId
+                artCount
+                savedArtist {
+                    name
+                    artistId
                     description
                     image
                     link

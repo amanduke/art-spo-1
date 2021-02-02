@@ -12,8 +12,7 @@ const typeDefs = gql`
 
     type Artist {
         artistId: ID
-        title: String
-        authors: [String]
+        name: String
         description: String
         image: String
         link: String
@@ -21,9 +20,8 @@ const typeDefs = gql`
 
     type ArtistInputs {
         artistId: ID
-        authors: [String]
         description: String
-        title: String
+        name: String
         image: String
         link: String
     }

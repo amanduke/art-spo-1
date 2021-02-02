@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const artistSchema = new Schema({
-    authors: [{
+    name: [{
         type: String,
     }],
     description: {
@@ -18,11 +18,7 @@ const artistSchema = new Schema({
     },
     link: {
         type: String,
-    },
-    title: {
-        type: String,
-        required: true,
-    },
+    }
 });
 
 module.exports = artistSchema;

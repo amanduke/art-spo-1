@@ -40,8 +40,7 @@ const SearchArtists = () => {
 
       const artistData = items.map((artist) => ({
         artistId: artist.id,
-        authors: artist.volumeInfo.authors || ['No author to display'],
-        title: artist.volumeInfo.title,
+        name: artist.volumeInfo.name,
         description: artist.volumeInfo.description,
         image: artist.volumeInfo.imageLinks?.thumbnail || '',
       }));
@@ -121,11 +120,11 @@ const SearchArtists = () => {
             return (
               <Card key={artist.artistId} border='dark'>
                 {artist.image ? (
-                  <Card.Img src={artist.image} alt={`The cover for ${artist.title}`} variant='top' />
+                  <Card.Img src={artist.image} alt={`The cover for ${artist.name}`} variant='top' />
                 ) : null}
                 <Card.Body>
-                  <Card.Title>{artist.title}</Card.Title>
-                  <p className='small'>Authors: {artist.authors}</p>
+                  <Card.Title>{artist.name}</Card.Title>
+                  <p className='small'>Authors: {artist.name}</p>
                   <Card.Text>{artist.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
