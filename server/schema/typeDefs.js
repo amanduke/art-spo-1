@@ -1,17 +1,17 @@
 const { gql } = require('apollo-server-express');
 
-// make sure to include a difference between 'saveArt' and 'savedArt'.
+// make sure to include a difference between 'saveArtist' and 'savedArtist'.
 const typeDefs = gql`
     type User {
         _id: ID
         username: String
         email: String
-        artCount: Int
-        savedArt: [Art]
+        artistCount: Int
+        savedArtist: [Artist]
     }
 
-    type Art {
-        artId: ID
+    type Artist {
+        artistId: ID
         title: String
         authors: [String]
         description: String
@@ -19,8 +19,8 @@ const typeDefs = gql`
         link: String
     }
 
-    type ArtInputs {
-        artId: ID
+    type ArtistInputs {
+        artistId: ID
         authors: [String]
         description: String
         title: String
@@ -41,8 +41,8 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        saveArt(artData: ArtInput!): User
-        removeArt(artId: ID!): User
+        saveArtist(artistData: ArtistInput!): User
+        removeArtist(artistId: ID!): User
     }
 `;
 

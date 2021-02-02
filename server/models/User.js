@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const artSchema = require('./Art');
+const artistSchema = require('./Artist');
 
 const userSchema = new Schema(
     {
@@ -20,7 +20,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        savedArt: [artSchema],
+        savedArtist: [artistSchema],
     },
     {
         toJSON: {
@@ -44,9 +44,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-// when we query a user we'll also get another field called 'artCount' with th number art items we have saved
-userSchema.virtual('artCount').get(function () {
-    return this.savedArt.length;
+// when we query a user we'll also get another field called 'artistCount' with th number art items we have saved
+userSchema.virtual('artistCount').get(function () {
+    return this.savedArtist.length;
 });
 
 const User = model('User', userSchema);

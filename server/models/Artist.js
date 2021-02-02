@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const artSchema = new Schema({
+const artistSchema = new Schema({
     authors: [{
         type: String,
     }],
@@ -9,7 +9,7 @@ const artSchema = new Schema({
         type: String,
         required: true,
     },
-    artId: {
+    artistId: {
         type: String,
         required: true,
     },
@@ -25,4 +25,4 @@ const artSchema = new Schema({
     },
 });
 
-module.exports = artSchema;
+module.exports = artistSchema;

@@ -40,11 +40,11 @@ const resolvers = {
             return { token, user };
         },
 
-        saveArt: async (parent, { artData }, context) => {
+        saveArtist: async (parent, { artistData }, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { savedArt: artData } },
+                    { $push: { savedArtist: artistData } },
                     { new: true, runValidators: true }
                 )
 
@@ -54,11 +54,11 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        removeArt: async (parent, { artId }, context) => {
+        removeArtist: async (parent, { artistId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedArt: { artId } } },
+                    { $pull: { savedArtist: { artistId } } },
                     { new: true, runValidators: true }
                 )
 

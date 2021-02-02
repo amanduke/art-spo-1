@@ -36,14 +36,14 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // save a Art painting to a user's `SavedArt` field by adding it to the set
+  // save a Artist to a user's `SavedArtist` field by adding it to the set
   // user comes from `req.user` created in the auth middleware function
-  async saveArt({ user, body }, res) {
+  async saveArtist({ user, body }, res) {
     console.log(user);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { savedArt: body } },
+        { $addToSet: { savedArtist: body } },
         { new: true, runValidators: true }
       );
       return res.json(updatedUser);
@@ -52,11 +52,11 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a art painting from `savedArt`
-  async deleteArt({ user, params }, res) {
+  // remove an artist from `savedArtist`
+  async deleteArtist({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { savedArt: { artId: params.artId } } },
+      { $pull: { savedArtist: { artistId: params.artistId } } },
       { new: true }
     );
     if (!updatedUser) {
