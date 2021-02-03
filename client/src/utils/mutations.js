@@ -25,7 +25,7 @@ export const ADD_USER = gql`
     }
 `;
 
-export const SAVE_BOOK = gql`
+export const SAVE_ARTIST = gql`
     mutation saveArtist($artistData: ArtistInput!) {
         saveArtist(artistData: $artistData) {
             _id

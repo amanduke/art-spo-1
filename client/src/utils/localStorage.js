@@ -1,12 +1,12 @@
-export const getSavedArtIds = () => {
-    const savedArtistIds = localStorage.getItem('saved_artist')
+export const saveArtistIds = () => {
+    const saveArtistIds = localStorage.getItem('saved_artist')
       ? JSON.parse(localStorage.getItem('saved_artist'))
       : [];
   
-    return savedartistIds;
+    return saveArtistIds;
   };
   
-  export const saveArtistIds = (ArtistIdArr) => {
+  export const getSavedArtistIds = (ArtistIdArr) => {
     if (ArtistIdArr.length) {
       localStorage.setItem('saved_artist', JSON.stringify(ArtistIdArr));
     } else {

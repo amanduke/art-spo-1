@@ -58,7 +58,7 @@ const SearchArtists = () => {
   // create function to handle saving a artist to our database
   const handleSaveArtist = async (artistId) => {
     // find the artist in `searchedArtists` state by the matching id
-    const ArtistToSave = searchedArtists.find((artist) => artist.artistId === artistId);
+    const artistToSave = searchedArtists.find((artist) => artist.artistId === artistId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;

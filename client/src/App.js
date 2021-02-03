@@ -6,7 +6,7 @@ import SearchArtist from './pages/SearchArtist';
 import SavedArtist from './pages/SavedArtist';
 import Navbar from './components/Navbar';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 const client = new ApolloClient({
