@@ -14,7 +14,7 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar bg='light'  expand='lg' class="text-dark">
         
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
