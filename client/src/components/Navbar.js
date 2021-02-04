@@ -14,7 +14,7 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='primary' variant='dark' expand='lg'>
+      <Navbar bg='dark' variant='dark' expand='lg'>
         
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
@@ -90,6 +90,26 @@ const AppNavbar = () => {
         </Container>
       </Jumbotron>
 
+      <Container>
+          <Card>
+      
+      <Card.Body>
+        <blockquote >
+          <h2>
+            {' '}
+            Not sure who to look for? Here are some famous artist's!{' '}
+          </h2>
+          <footer >
+             
+          </footer>
+        </blockquote>
+      </Card.Body>
+    </Card>
+    
+    </Container>
+    
+
+
               <Container>
                   <CardDeck>
                     <Card>
@@ -130,6 +150,7 @@ const AppNavbar = () => {
               </Card>
             </CardDeck>
             </Container>
+            <Card.Header></Card.Header>
 
 
     </>
