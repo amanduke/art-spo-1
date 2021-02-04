@@ -30,27 +30,61 @@ const SearchArtists = () => {
     }
 
     try {
-      const response = await searchGoogleArtists(searchInput);
+      // const response = await searchGoogleArtists(searchInput);
+      fetch(`https://api.artic.edu/api/v1/artist/search?q=${searchInput}`,{
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: "",
+            link: ""
+        })
+      })
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      .then(e => e.json())
+      .then(data => { 
+        const newData = data.data
+        const artistData = newData.map((artist) => (
+          console.log(artist)
+        //   {
+        //   artistId: artist.id,
+        //   // name: artist.volumeInfo.name,
+        //   // description: artist.volumeInfo.description,
+        //   // image: artist.volumeInfo.imageLinks?.thumbnail || '',
+        // }
+        ));
+  
+        console.log(artistData)
+    })
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
-      const { items } = await response.json();
+      // const { items } = await response.json();
+      // console.log(items)
 
-      const artistData = items.map((artist) => ({
-        artistId: artist.id,
-        name: artist.volumeInfo.name,
-        description: artist.volumeInfo.description,
-        image: artist.volumeInfo.imageLinks?.thumbnail || '',
-      }));
-
-      setSearchedArtists(artistData);
-      setSearchInput('');
+      
+    //   setSearchedArtists(artistData);
+    //   setSearchInput('');
     } catch (err) {
       console.error(err);
     }
   };
+
+  // const handleFormResults = async (event) => {
+  //   event.preventDefault();
+
+  //   if (!userInput) {
+  //     return false;
+  //   }
+
+  //   try {
+
+  //   }
+
+
+  // }
 
   const [saveArtist] = useMutation(SAVE_ARTIST);
 

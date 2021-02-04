@@ -5,6 +5,9 @@ import ApolloClient from 'apollo-boost';
 import SearchArtist from './pages/SearchArtist';
 import SavedArtist from './pages/SavedArtist';
 import Navbar from './components/Navbar';
+// import Header from "./components/Header/Header";
+// import HeaderLinks from "./components/Header/HeaderLinks.js";
+
 
 const client = new ApolloClient({
   request: operation => {
@@ -21,18 +24,21 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Navbar />
-          <Switch>
-            <Route exact path='/' component={SearchArtist} />
-            <Route exact path='/saved' component={SavedArtist} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-          </Switch>
-        </>
-      </Router>
-    </ApolloProvider>
+    <div>
+      <ApolloProvider client={client}>
+        <Router>
+          <>
+            <Navbar />
+            <Switch>
+              
+              <Route exact path='/' component={SearchArtist} />
+              <Route exact path='/saved' component={SavedArtist} />
+              <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
+            </Switch>
+          </>
+        </Router>
+      </ApolloProvider>
+    </div>
   );
 }
 

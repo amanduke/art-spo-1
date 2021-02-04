@@ -9,7 +9,7 @@ export const GET_ME = gql`
             artCount
             savedArtist {
                 name
-                artId
+                artistId
                 description
                 image
                 link

@@ -18,7 +18,7 @@ const typeDefs = gql`
         link: String
     }
 
-    type ArtistInputs {
+    type ArtistInput {
         artistId: ID
         description: String
         name: String
