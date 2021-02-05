@@ -1,4 +1,4 @@
 export const searchGoogleArtists  = (query) => {
-    return fetch(`https://www.googleapis.com/artists/v1/volumes?q=${query}`);
-  };
+  return fetch(`https://api.artsy.net/api/search?q=${query}`).then(res=>{console.log(res)})
+};
 
