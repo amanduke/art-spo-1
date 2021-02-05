@@ -12,10 +12,10 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar bg='blue' variant='violet' expand='extra-lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            Google Artist Search by Name
+            Search by Name
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
@@ -27,7 +27,7 @@ const AppNavbar = () => {
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Artist
+                  See Your Artist
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>

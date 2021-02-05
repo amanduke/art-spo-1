@@ -1,9 +1,12 @@
+
+
 body {
   font-family: 'Rubik', sans-serif;
+  background-image: url('../src/assets/img/bg4.jpg');
+  background-position: center;
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -14,4 +17,12 @@ h6 {
 .small {
   font-weight: 300;
   font-style: italic;
+}
+
+h2 {
+  color:violet; 
+}
+
+.btn-submit {
+  background-color: violet;
 }

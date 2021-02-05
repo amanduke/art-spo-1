@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 import { searchGoogleArtists } from '../utils/API';
 import { saveArtistIds, getSavedArtistIds } from '../utils/localStorage';
-import { SAVE_ARTIST }  from '../utils/mutations';
+import { SAVE_ARTIST } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
 
 const SearchArtists = () => {
-  // create state for holding returned google api data
+
   const [searchedArtists, setSearchedArtists] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
@@ -15,8 +15,9 @@ const SearchArtists = () => {
   // create state to hold saved artistId values
   const [savedArtistIds, setSavedArtistIds] = useState(getSavedArtistIds());
 
+  const [artistData, setArtistData] = useState([])
+
   // set up useEffect hook to save `savedArtistIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveArtistIds(savedArtistIds);
   });
@@ -30,33 +31,55 @@ const SearchArtists = () => {
     }
 
     try {
+      fetch(`https://api.artic.edu/api/v1/artworks/search?q=${searchInput}&fields=image_id`)
+      .then(
+        res=>{
+          res.body.getReader().read()
+            .then(data=>{
+              let artistData = JSON.parse(new TextDecoder("utf-8").decode(data.value));
+              // featch(`https://api.artic.edu/api/v1/artworks/search?q=`)
+              console.log(artistData)
+              const imageSources = artistData.data.map((artist) =>  {
+                const src = `https://www.artic.edu/iiif/2/${artist.image_id}/full/843,/0/default.jpg`; 
+                return { src }
+              });
+              setArtistData(imageSources);
+            }) 
+        }
+      )
       // const response = await searchGoogleArtists(searchInput);
-      fetch(`https://api.artic.edu/api/v1/artist/search?q=${searchInput}`,{
-        method: 'GET',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            title: "",
-            link: ""
-        })
-      })
+      // fetch(`https://api.artic.edu/api/v1/artist/search?q=${searchInput}`, {
+      //   method: 'POST',
+      //   header: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     query: 
+      //     `query {
+      //       type Artist {
+      //         title: String
+      //         api_link: String
+      //       }
+      //     }`
+      //   })
+      // })
 
-      .then(e => e.json())
-      .then(data => { 
-        const newData = data.data
-        const artistData = newData.map((artist) => (
-          console.log(artist)
-        //   {
-        //   artistId: artist.id,
-        //   // name: artist.volumeInfo.name,
-        //   // description: artist.volumeInfo.description,
-        //   // image: artist.volumeInfo.imageLinks?.thumbnail || '',
-        // }
-        ));
-  
-        console.log(artistData)
-    })
+      //   .then(res => res.json())
+      //   .then(data => { 
+      //     console.log(data.data)
+          // const newData = data.data
+          // const artistData = newData.map((artist) => (
+          //   console.log(artist)
+            //   {
+            //   artistId: artist.id,
+            //   // name: artist.volumeInfo.name,
+            //   // description: artist.volumeInfo.description,
+            //   // image: artist.volumeInfo.imageLinks?.thumbnail || '',
+            // }
+          // ));
+
+          // console.log(artistData)
+        // })
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
@@ -64,9 +87,9 @@ const SearchArtists = () => {
       // const { items } = await response.json();
       // console.log(items)
 
-      
-    //   setSearchedArtists(artistData);
-    //   setSearchInput('');
+
+      //   setSearchedArtists(artistData);
+      //   setSearchInput('');
     } catch (err) {
       console.error(err);
     }
@@ -118,7 +141,7 @@ const SearchArtists = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className='text-dark bg-light'>
         <Container>
           <h1>Search for Artists!</h1>
           <Form onSubmit={handleFormSubmit}>
@@ -134,7 +157,7 @@ const SearchArtists = () => {
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+                <Button className='btn-submit btn-lg' type='submit' variant='success' size='lg'>
                   Submit Search
                 </Button>
               </Col>
@@ -149,13 +172,19 @@ const SearchArtists = () => {
             ? `Viewing ${searchedArtists.length} results:`
             : 'Search for an artist to begin'}
         </h2>
-        <CardColumns>
+          {
+          artistData.map((artistSrc) => {
+            return (
+              <div style={{width: '20%', height: '20%'}}>
+                <img src={artistSrc.src}></img>
+              </div>
+            )
+          })
+        }
           {searchedArtists.map((artist) => {
             return (
               <Card key={artist.artistId} border='dark'>
-                {artist.image ? (
-                  <Card.Img src={artist.image} alt={`The cover for ${artist.name}`} variant='top' />
-                ) : null}
+                
                 <Card.Body>
                   <Card.Title>{artist.name}</Card.Title>
                   <p className='small'>Authors: {artist.name}</p>
@@ -174,7 +203,6 @@ const SearchArtists = () => {
               </Card>
             );
           })}
-        </CardColumns>
       </Container>
     </>
   );
