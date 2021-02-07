@@ -6,6 +6,7 @@ import { SAVE_ARTIST } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
 
+
 const SearchArtists = () => {
 
   const [searchedArtists, setSearchedArtists] = useState([]);
@@ -157,9 +158,7 @@ const SearchArtists = () => {
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button className='btn-submit btn-lg' type='submit' variant='success' size='lg'>
-                  Submit Search
-                </Button>
+                <Button color="danger" size="lg" active>Submit Search</Button>{' '}
               </Col>
             </Form.Row>
           </Form>
@@ -175,7 +174,7 @@ const SearchArtists = () => {
           {
           artistData.map((artistSrc) => {
             return (
-              <div style={{width: '20%', height: '20%'}}>
+              <div class= '.col-6' style={{width: '20%', height: '20%'}}>
                 <img src={artistSrc.src}></img>
               </div>
             )
@@ -187,7 +186,7 @@ const SearchArtists = () => {
                 
                 <Card.Body>
                   <Card.Title>{artist.name}</Card.Title>
-                  <p className='small'>Authors: {artist.name}</p>
+                  <p className='small'>Artists: {artist.name}</p>
                   <Card.Text>{artist.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button

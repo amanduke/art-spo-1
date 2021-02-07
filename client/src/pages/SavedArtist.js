@@ -61,7 +61,7 @@ const SavedArtist = () => {
                 {artist.image ? <Card.Img src={artist.image} alt={`The cover for ${artist.name}`} variant='top' /> : null}
                 <Card.Body>
                   <Card.Title>{artist.name}</Card.Title>
-                  <p className='small'>Authors: {artist.name}</p>
+                  <p className='small'>Artists: {artist.name}</p>
                   <Card.Text>{artist.description}</Card.Text>
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteArtist(artist.artistId)}>
                     Delete this Artist!
