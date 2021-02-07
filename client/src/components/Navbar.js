@@ -18,13 +18,13 @@ const AppNavbar = () => {
         
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            Google Artist Search by Name
+            Artist Search by Name
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
               <Nav.Link as={Link} to='/'>
-                Search For Artist
+                Search For an Artist
               </Nav.Link>
               {/* if user is logged in show saved artist and logout */}
               {Auth.loggedIn() ? (

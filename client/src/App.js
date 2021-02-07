@@ -5,8 +5,6 @@ import ApolloClient from 'apollo-boost';
 import SearchArtist from './pages/SearchArtist';
 import SavedArtist from './pages/SavedArtist';
 import Navbar from './components/Navbar';
-// import Header from "./components/Header/Header";
-// import HeaderLinks from "./components/Header/HeaderLinks.js";
 
 
 const client = new ApolloClient({

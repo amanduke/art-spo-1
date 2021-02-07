@@ -2,21 +2,17 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const artistSchema = new Schema({
-    name: [{
+    displayname: [{
         type: String,
     }],
-    description: {
+    key: {
         type: String,
         required: true,
     },
-    artistId: {
-        type: String,
-        required: true,
-    },
-    image: {
+    url: {
         type: String,
     },
-    link: {
+    culture: {
         type: String,
     }
 });

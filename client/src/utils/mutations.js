@@ -33,11 +33,10 @@ export const SAVE_ARTIST = gql`
             email
             artistCount
             savedArtist {
-                name
-                artistId
-                description
-                image
-                link
+                key
+                displayname
+                url
+                culture 
             }
         }
     }
@@ -50,11 +49,10 @@ export const REMOVE_ARTIST = gql`
                 username
                 artCount
                 savedArtist {
-                    name
-                    artistId
-                    description
-                    image
-                    link
+                    key
+                    displayname
+                    url
+                    culture
             }
         }
     }

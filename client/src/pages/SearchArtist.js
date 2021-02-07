@@ -42,7 +42,9 @@ const SearchArtists = () => {
 
         const artistData = items.records.map((artist) => ({
           key: artist.personid,
-          displayname: artist.displayname 
+          displayname: artist.displayname,
+          url: artist.url,
+          culture: artist.culture
         }))
         
         
@@ -57,7 +59,7 @@ const SearchArtists = () => {
             if (items.records[j].imagecount === 0) {
               continue 
             }
-            artistData[i].imgArt = items.records[j].primaryimageurl+'?height=250&width=250'
+            artistData[i].imgArt = items.records[j].primaryimageurl+'?height=300&width=300'
           }
 
         }
@@ -106,65 +108,8 @@ const SearchArtists = () => {
     //   }
     // }
 
-    // fetch(`https://api.artic.edu/api/v1/artist/search?q=${searchInput}`, {
-    //   method: 'POST',
-    //   header: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     query: 
-    //     `query {
-    //       type Artist {
-    //         title: String
-    //         api_link: String
-    //       }
-    //     }`
-    //   })
-    // })
-
-    //   .then(res => res.json())
-    //   .then(data => { 
-    //     console.log(data.data)
-    // const newData = data.data
-    // const artistData = newData.map((artist) => (
-    //   console.log(artist)
-    //   {
-    //   artistId: artist.id,
-    //   // name: artist.volumeInfo.name,
-    //   // description: artist.volumeInfo.description,
-    //   // image: artist.volumeInfo.imageLinks?.thumbnail || '',
-    // }
-    // ));
-
-    // console.log(artistData)
-    // })
-    // if (!response.ok) {
-    //   throw new Error('something went wrong!');
-    // }
-
-    // const { items } = await response.json();
-    // console.log(items)
-
-
     //   setSearchedArtists(artistData);
     //   setSearchInput('');
-
-
-    // const handleFormResults = async (event) => {
-    //   event.preventDefault();
-
-    //   if (!userInput) {
-    //     return false;
-    //   }
-
-    //   try {
-
-    //   }
-
-    // } catch (err) {
-    //   console.error(err);
-    // }
-    // }
 
     const [saveArtist] = useMutation(SAVE_ARTIST);
 
@@ -230,7 +175,6 @@ const SearchArtists = () => {
               ? `Viewing ${searchedArtists.length} results:`
               : 'Search for an artist to begin'}
           </h2>
-
           
           {/* {
             artistData.map((artistSrc) => {
@@ -249,9 +193,11 @@ const SearchArtists = () => {
                 <Card.Body>
                   <Card.Title>{artist.displayname}</Card.Title>
                   <p className='small'>Authors: {artist.displayname}</p>
-                  <Card.Text>{artist.description}</Card.Text>
-                  <img alt= {'artwork by '+artist.displayname} src={console.log(artist)|| artist.imgArt}></img>
-                  
+                  <Card.Text>{artist.culture}</Card.Text>
+                  <img 
+                    alt= {'find art here '+artist.url}
+                    src={console.log(artist.url)|| artist.imgArt}>
+                  </img>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedArtistIds?.some((savedArtistId) => savedArtistId === artist.key)}
