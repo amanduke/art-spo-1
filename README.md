@@ -1,5 +1,7 @@
 # {Artspo}
 
+<a href='./LICENSE'>![License](https://img.shields.io/badge/License%3A-MIT-green.svg)</a>
+
 ## Table of Contents
 * [User Story](#user-story)
 * [Criteria](#criteria)
@@ -16,6 +18,12 @@ I WANT an webpage that can give artists inspiration from other artists of art wo
 SO WHEN I search for a painting it will display image, description and able to save favorite art paintings. 
 
 ## Usage
+Art-spo works as a full-stack MERN appliaction with both client and server side. 
+A user can aearch for an artist by name and recive a card list of items featureing the all artist with said common name,
+what culture they are from and influenced by, and an image of their works with and imbeded url. 
+All reults are provided by the Harvard Museum of Art API. 
+A user should also be able to login and save their search results by clicking on the list items and is saved to thier own Saved Artist Dashboard.
+They can access the their search saved history of artist from there. 
 
 ## Criteria
 WHEN I load the search engine to Artspo <br />
@@ -41,10 +49,19 @@ THEN that artist artwork is deleted from my saved arts list <br />
 WHEN I click on the Logout button <br />
 THEN I am logged out of the site and presented with the homepage of the login/signup form <br />
 
-
-
 ## Screenshots
 
+#### Landing Page
+
+![Landing Page](./client/src/assets/img/screenshots/artspo-landingpage.png)
+
+#### Searching for Artist List 
+
+![Searching for Artist List](./client/src/assets/img/screenshots/SearchArtist-SS.png)
+
+#### User Login and Signup
+
+![User Login and Signup](./client/src/assets/img/screenshots/login-signin-artspo.png)
 
 ## Technologies
 1. Mongoose 
@@ -54,14 +71,15 @@ THEN I am logged out of the site and presented with the homepage of the login/si
 5. React
 6. Apollo
 7. Graphlq
-8. Metropolitan Museum of Art API
+8. Harvard Museum of Art API
 
 ## Mockup
 ![Mockup](.\client\public\artspo.jpg)
 
 ## Contact 
-Visit our **[GitHub profiles](https://github.com/Aken00/) (https://github.com/Aken00/) (https://github.com/Champion113)** 
+Visit our **[GitHub profiles](https://github.com/Aken00/) (https://github.com/amanduke) (https://github.com/Champion113)** 
 to check out this and other projects.
-Contact me at **Ajken04@gmail.com** with any questions or if you'd like to collaborate.
 
-
+## License  
+  <a href='./LICENSE'>![License](https://img.shields.io/badge/License%3A-MIT-green.svg)</a>  
+  This app is licensed under the MIT license.
