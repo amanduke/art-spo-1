@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import { Jumbotron, CardBody } from 'reactstrap';
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import Auth from '../utils/auth';
@@ -14,11 +14,11 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='light'  expand='lg' class="text-dark">
+      <Navbar bg='light'  expand='lg' class="navbar navbar-expand-lg navbar-light bg-light">
         
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            Artist Search by Name
+            Artspo
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
@@ -78,16 +78,23 @@ const AppNavbar = () => {
           </Modal.Body>
         </Tab.Container>
       </Modal>
-      <Jumbotron fluid>
-        <Container>
-           <h1>Art-Spo</h1>
-              <p>
-                If you're an inspiring artist, creative, or just curious about how or why
-                anyone would care about art, begin your journey here. Search for an artist to learn 
-                more about what they did, who they are, and how they made an impression in the world. Find your
-                art inspiration with Art-Spo.
-              </p>
-        </Container>
+      <Jumbotron>
+        <h1 className="display-3">Welcome To Artspo</h1>
+        <p className="lead">Stuck in an art block? Search and save art from famous, contemporary, and historical artists for your inspiration with Artspo.</p>
+
+
+        <Card>
+        <CardBody>
+          <blockquote className="blockquote blockquote-primary mb-0">
+            <p>
+            “To be an artist is to believe in life.” 
+            </p>
+            <footer className="blockquote-footer">
+            <cite title="Source Title">Henry Moore</cite>
+            </footer>
+          </blockquote>
+        </CardBody>
+      </Card>
       </Jumbotron>
 
       <Container>
@@ -109,8 +116,7 @@ const AppNavbar = () => {
     </Container>
     
 
-
-              <Container>
+    <Container>
                   <CardDeck>
                     <Card>
                       <Card.Img variant="top" src="https://upload.wikimedia.org/wikipedia/en/1/1e/Frida_Kahlo_%28self_portrait%29.jpg" />
@@ -151,6 +157,7 @@ const AppNavbar = () => {
             </CardDeck>
             </Container>
             <Card.Header></Card.Header>
+
 
 
     </>
